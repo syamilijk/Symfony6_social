@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Posts
+{% endblock %}
+
+{% block body %}
+	{% if posts|length > 0 %}
+		{% for post in posts %}
+			<div>
+				<a href= {{path('app_micro_post_show', {post: post.id})}}>{{post.title}}</a>
+			</div>
+		{% endfor %}
+	{% else %}
+		<h2>No messages found</h2>
+	{% endif %}
+{% endblock %}
