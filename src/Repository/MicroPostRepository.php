@@ -39,9 +39,9 @@ class MicroPostRepository extends ServiceEntityRepository
         }
     }
 
-    public function findAll(){
-        return 'hai';
-    }
+    // public function findAll(){
+    //     return 'hai';
+    // }
 
 //    /**
 //     * @return MicroPost[] Returns an array of MicroPost objects

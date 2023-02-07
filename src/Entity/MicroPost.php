@@ -23,8 +23,6 @@ class MicroPost
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
-    #[ORM\Column(length: 500)]
-    private ?string $Testfield = null;
 
     public function getId(): ?int
     {
@@ -67,15 +65,4 @@ class MicroPost
         return $this;
     }
 
-    public function isTestfield(): ?string
-    {
-        return $this->Testfield;
-    }
-
-    public function setTestfield(?string $Testfield): self
-    {
-        $this->Testfield = $Testfield;
-
-        return $this;
-    }
 }
