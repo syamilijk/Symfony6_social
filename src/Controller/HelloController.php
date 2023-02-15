@@ -2,9 +2,20 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use DateTime;
+use App\Entity\User;
+use App\Entity\Comment;
+use App\Entity\MicroPost;
+use App\Entity\Test\Tester;
+use App\Entity\UserProfile;
+use App\Repository\MicroPostRepository;
+use App\Repository\Test\TesterRepository;
+use App\Repository\UserProfileRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 class HelloController extends AbstractController
 {
@@ -14,9 +25,44 @@ class HelloController extends AbstractController
         ['message' => 'bye', 'created' => '2021/03/11'],
     ];
 
+    public function __construct(){
+        $this->messages = $this->messageArray;
+    }
+
     #[Route('/', name: 'app_index')]
-    public function index(): Response{
-        return $this->render('hello/index.html.twig');
+    public function index(MicroPostRepository $posts): Response{
+
+        $post = new MicroPost();
+        $post->setTitle('Hello');
+        $post->setText('Hello');
+        $post->setCreated(new DateTime());
+
+        $comment = new Comment();
+        $comment->setText('Hello');
+
+        $post->addComment($comment);
+        $posts->save($post, true);
+
+        // $user = new User();
+        // $user->setEmail('email123@email.com');
+        // $user->setPassword('123456789');
+        
+
+        // $profile = new UserProfile();
+        // $profile->setUser($user);
+        // $profiles->save($profile, true);
+
+        // $profile = $profiles->find(1);
+        // $profiles->remove($profile, true);
+
+        return $this->render(
+            'hello/index.html.twig',
+            [
+                'messages' => $this->messages,
+                'limit' => 3
+            ]
+        
+        );
     }
 
     #[Route('/hello', name: 'app_hello')]

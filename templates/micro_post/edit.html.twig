@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post-Add New Post{% endblock %}
+{% block title %}Editing an existing form {% endblock %}
 
 {% block bread %}
-	⇾ Add Post
+	⇾ <a href="{{ path('app_micro_post_show', {post: post.id}) }}">Post</a> ⇾ Edit
 {% endblock %}
 
 {% block body %}

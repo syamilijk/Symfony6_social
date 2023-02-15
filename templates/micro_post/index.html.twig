@@ -4,13 +4,13 @@
 {% endblock %}
 
 {% block body %}
+	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 	{% if posts|length > 0 %}
 		{% for post in posts %}
-			<div>
-				<a href= {{path('app_micro_post_show', {post: post.id})}}>{{post.title}}</a>
-			</div>
+			{{ include('micro_post/_post.html.twig' , { post: post }) }}
 		{% endfor %}
 	{% else %}
 		<h2>No messages found</h2>
 	{% endif %}
+	</div>
 {% endblock %}
