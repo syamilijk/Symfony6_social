@@ -9,7 +9,7 @@
             {% endblock %}
         {% endembed %}
 
-        {% embed 'shared/_tab.html.twig' with { route: 'app_profile_follows', classes: 'ml-2' } %}
+        {% embed 'shared/_tab.html.twig' with { route: 'app_profile_follows', classes: 'ml-3' } %}
             {% block content %}
                 Follows <span class="px-2 rounded-md bg-gray-200 dark:bg-gray-700">{{ user.follows.count }}</span>
             {% endblock %}
@@ -18,7 +18,7 @@
             {% endblock %}
         {% endembed %}
 
-        {% embed 'shared/_tab.html.twig' with { route: 'app_profile_followers', classes: 'ml-2' } %}
+        {% embed 'shared/_tab.html.twig' with { route: 'app_profile_followers', classes: 'ml-3' } %}
             {% block content %}
                 Followers <span class="px-2 rounded-md bg-gray-200 dark:bg-gray-700">{{ user.followers.count }}</span>
             {% endblock %}
